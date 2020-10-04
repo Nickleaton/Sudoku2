@@ -1,0 +1,34 @@
+class QueenssMove(ChessMove):
+
+    def constraints(self, sudoku: Sudoku):
+        offsets = [(-1, -2), (1, -2), (-2, -1), (-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1)]
+        offsets = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        self.add_chess_move(sudoku, offsets, 'Kings')
+
+    def description(self):
+        return "QueensMove"
+
+    def add_queen_move(sudoku, offsets, value) -> None:
+        for row in sudoku.ROWS:
+            for column in sudoku.COLUMNS:
+                for x, y in offsets:
+                    row2 = row + y
+                    column2 = column + x
+                    if not sudoku.valid(row2):
+                        continue
+                    if not sudoku.valid(column2):
+                        continue
+                    cname = f"Queens_move_{value}_{row}_{column}_{row2}_{column2}"
+                    sudoku.problem += sudoku.choices[value][row2][column2] \
+                                      + sudoku.choices[value][row][column] <= 1, \
+                                      cname
+
+    def add_queens_move(self, values: List[int]) -> None:
+        offsets = []
+        for v in self.VALUES:
+            offsets.append((v, v))
+            offsets.append((v, -v))
+            offsets.append((-v, v))
+            offsets.append((-v, -v))
+        for value in values:
+            self.add_queen_move(offsets, value)

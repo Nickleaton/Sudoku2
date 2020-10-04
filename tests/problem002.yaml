@@ -1,0 +1,25 @@
+reference: https://cracking-the-cryptic.web.app/sudoku/HhPLM3MnRH
+
+knowns:
+  - 2.......5
+  - .........
+  - 8........
+  - .........
+  - .........
+  - .........
+  - ........2
+  - .........
+  - 5.......8
+
+UniqueCells: True
+UniqueRows: True
+UniqueColumns: True
+UniqueBoxes: True
+KnightsMove: True
+
+MagicSquares:
+  - MagicSquare:
+    x: 5
+    y: 5
+Thermometers:
+  - [[8,2], [7,3], [6,4], [5,5], [4,6],[3,7], [2,8]]

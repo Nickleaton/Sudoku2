@@ -1,0 +1,21 @@
+reference: https://cracking-the-cryptic.web.app/sudoku/87P6H8nQ4g
+video: https://www.youtube.com/watch?v=t_yM6OII0Us&t=551s
+
+UniqueCells: True
+UniqueRows: True
+UniqueColumns: True
+UniqueBoxes: True
+Argyle: True
+
+knowns:
+  - .2.....9.
+  - 7.......6
+  - ...5.3...
+  - ..1...9..
+  - .........
+  - ..7...8..
+  - ...4.6...
+  - 1.......9
+  - .7.....8.
+
+

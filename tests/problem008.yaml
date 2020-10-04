@@ -1,0 +1,32 @@
+reference: https://cracking-the-cryptic.web.app/sudoku/87P6H8nQ4g
+video: https://www.youtube.com/watch?v=t_yM6OII0Us&t=551s
+
+UniqueCells: True
+UniqueRows: True
+UniqueColumns: True
+UniqueBoxes: True
+XPositional: True
+
+knowns:
+  - .........
+  - ...2...8.
+  - ..9...2..
+  - ...5.6...
+  - ..6.9...4
+  - .9...4.6.
+  - ....4.7..
+  - ...6...4.
+  - ..7...8..
+
+solution:
+  - 852963417
+  - 341257689
+  - 679481235
+  - 734526198
+  - 216398574
+  - 598714362
+  - 963845721
+  - 185672943
+  - 427139856
+
+

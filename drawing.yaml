@@ -1,0 +1,44 @@
+# Format around each cell
+cell_line:
+  stroke: black
+  stroke-width: 1
+
+# Format of lines around grid
+border_line:
+  stroke: black
+  stroke-width: 3
+
+# Format to emphasis each box
+box_line:
+  stroke: black
+  stroke-width: 3
+
+# Format of diagonals
+diagonal_line:
+  stroke: blue
+  stroke-width: 2
+
+spacing: 60
+
+size: 9
+
+offset: 10
+
+board_size: [600,600]
+
+x_text_offset: +15
+y_text_offset: -10
+
+number_text:
+  font-size: 50
+
+circle_radius: 25
+
+circle:
+  stroke-width: 2
+  stroke: grey
+  fill: white
+
+arrow_line:
+  stroke-width: 2
+  stroke: grey

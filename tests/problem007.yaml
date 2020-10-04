@@ -1,0 +1,40 @@
+reference: https://cracking-the-cryptic.web.app/sudoku/TQgmLDQLd7
+video: https://www.youtube.com/watch?v=vgKt7Q0HdzI&t=0s
+
+knowns:
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+  - .........
+
+UniqueCells: True
+UniqueRows: True
+UniqueColumns: True
+UniqueBoxes: True
+KnightsMove: True
+
+regions:
+  - AAAAAABCC
+  - DDDDDABCC
+  - EEEEDBBCC
+  - EFFEDBCCB
+  - EFFE.BCCB
+  - EFFEGBCCB
+  - FFEEGBBBB
+  - FFEHGGGGG
+  - FFEHHHHHH
+
+region_totals:
+  - A: 40
+  - B: 68
+  - C: 53
+  - D: 39
+  - E: 72
+  - F: 67
+  - G: 31
+  - H: 30
