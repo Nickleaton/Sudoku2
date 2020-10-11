@@ -30,7 +30,12 @@ x_text_offset: +15
 y_text_offset: -10
 
 number_text:
-  font-size: 50
+  known:
+    font-size: 50
+    fill: black
+  unknown:
+    font-size: 50
+    fill: dodgerblue
 
 circle_radius: 25
 
@@ -42,3 +47,13 @@ circle:
 arrow_line:
   stroke-width: 2
   stroke: grey
+
+thermometer_line:
+  stroke-width: 12
+  stroke: pink
+  stroke-linecap: round
+
+thermometer_bulb:
+  stroke-width: 0
+  stroke: pink
+  fill: pink

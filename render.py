@@ -4,7 +4,7 @@ import svgwrite
 from enum import Enum, auto
 import yaml
 
-from Direction import Direction
+from direction import Direction
 
 
 class Side(Enum):
@@ -29,11 +29,10 @@ class RenderGrid:
         self.y_text_offset = self.settings['y_text_offset']
         self.circle_radius = self.settings['circle_radius']
 
-    def center (self, row: int, column: int) -> Tuple[int, int]:
-        x = self.offset + int((row - 0.5) * self.spacing)
-        y = self.offset + int((column - 0.5) * self.spacing)
+    def center(self, row: int, column: int) -> Tuple[int, int]:
+        x = self.offset + int((column - 0.5) * self.spacing)
+        y = self.offset + int((row - 0.5) * self.spacing)
         return x, y
-
 
     def draw_cells(self):
         for i in range(self.count + 1):
@@ -51,6 +50,15 @@ class RenderGrid:
                     **self.settings['cell_line']
                 )
             )
+
+    def shade_cell(self, row: int, col: int, colour: str):
+        self.drawing.add(
+            self.drawing.rect(
+                (self.offset + (row - 1) * self.spacing, self.offset + (col - 1) * self.spacing),
+                (self.spacing, self.spacing),
+                fill=colour
+            )
+        )
 
     def draw_border(self):
         self.drawing.add(
@@ -99,6 +107,9 @@ class RenderGrid:
                 )
             )
 
+    def draw_line(self, r1: int, c1: int, r2: int, c2: int, category: str):
+        self.drawing.add(self.drawing.line(self.center(r1, c1),self.center(r2, c2), **self.settings[category]))
+
     def draw_diagonals(self):
         self.drawing.add(
             self.drawing.line(
@@ -115,31 +126,30 @@ class RenderGrid:
             )
         )
 
-    def draw_number(self, row: int, column: int, value: int):
-        x = self.offset + int((row - 1) * self.spacing) + self.x_text_offset
-        y = self.offset + int((column) * self.spacing) + self.y_text_offset
+    def draw_number(self, row: int, col: int, value: int, known: bool):
+        x = self.offset + int((col - 1) * self.spacing) + self.x_text_offset
+        y = self.offset + int(row * self.spacing) + self.y_text_offset
         self.drawing.add(
-            self.drawing.text(text=str(value), insert=(x, y), **self.settings['number_text'])
+            self.drawing.text(text=str(value), insert=(x, y),
+                              **self.settings['number_text']['known' if known else 'unknown'])
         )
 
-    def draw_circle(self, row: int, column: int) -> None:
-        x,y = self.center(row, column)
+    def draw_circle(self, row: int, column: int, category: str) -> None:
+        x, y = self.center(row, column)
         self.drawing.add(
-            self.drawing.circle(center=(x, y), r=self.circle_radius, **(self.settings['circle']))
+            self.drawing.circle(center=(x, y), r=self.circle_radius, **(self.settings[category]))
         )
-
-
 
     def draw_arrow(self, r1: int, c1: int, r2: int, c2: int) -> None:
         direction = Direction.create(r1, c1, r2, c2)
-        print (direction.name)
-        x1,y1 = self.center(r1, c1)
-        x2,y2 = self.center(r2, c2)
-        self.drawing.add(self.drawing.line((x1,y1),(x2,y2),**self.settings['arrow_line']))
-        self.draw_circle(r1,c1)
+        print(direction.name)
+        x1, y1 = self.center(r1, c1)
+        x2, y2 = self.center(r2, c2)
+        self.drawing.add(self.drawing.line((x1, y1), (x2, y2), **self.settings['arrow_line']))
+        self.draw_circle(r1, c1)
         (dx1, dy1), (dx2, dy2) = direction.arrow(20)
-        self.drawing.add(self.drawing.line((x2,y2),(x2+dx1,y2+dy1),**self.settings['arrow_line']))
-        self.drawing.add(self.drawing.line((x2,y2),(x2+dx2,y2+dy2),**self.settings['arrow_line']))
+        self.drawing.add(self.drawing.line((x2, y2), (x2 + dx1, y2 + dy1), **self.settings['arrow_line']))
+        self.drawing.add(self.drawing.line((x2, y2), (x2 + dx2, y2 + dy2), **self.settings['arrow_line']))
 
     def draw_outside_number(self, row: int, column: int, value: int) -> None:
         pass

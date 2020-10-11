@@ -1,0 +1,21 @@
+Reference: https://cracking-the-cryptic.web.app/sudoku/jHQR32FrfP
+Video: https://www.youtube.com/watch?v=TQ0lso4fJzk&t=0s&ab_channel=CrackingTheCryptic
+Author:  Philip Newman
+Title: Tatooine Sunset
+
+Constraints:
+  - UniqueCells
+  - UniqueRows
+  - UniqueColumns
+  - UniqueBoxes
+  - Knowns:
+    - .........
+    - ..98....7
+    - .8..6..5.
+    - .5..4..3.
+    - ..79....2
+    - .........
+    - ..27....9
+    - .4..5..6.
+    - 3....62..
+

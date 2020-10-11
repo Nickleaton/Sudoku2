@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <html>
+        <head>
+        <title>Sudoku</title>
+    </head>
+    <body>
+    <h1>Description</h1>
+    <h1>Rules</h1>
+    $rules
+    <h1>Board</h1>
+    $svg
+    <h1>Solution</h1>
+    $solution
+    </body>
+</html>

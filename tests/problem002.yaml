@@ -1,25 +1,33 @@
-reference: https://cracking-the-cryptic.web.app/sudoku/HhPLM3MnRH
+Reference: https://cracking-the-cryptic.web.app/sudoku/HhPLM3MnRH
+Video: https://www.youtube.com/watch?v=LuFvoFkqZDA&feature=emb_logo&ab_channel=CrackingTheCryptic
 
-knowns:
-  - 2.......5
-  - .........
-  - 8........
-  - .........
-  - .........
-  - .........
-  - ........2
-  - .........
-  - 5.......8
+Constraints:
+  - UniqueCells
+  - UniqueRows
+  - UniqueColumns
+  - UniqueBoxes
+  - AntiKnightsMove
+  - Knowns:
+    - 2.......5
+    - .........
+    - 8........
+    - .........
+    - .........
+    - .........
+    - ........2
+    - .........
+    - 5.......8
 
-UniqueCells: True
-UniqueRows: True
-UniqueColumns: True
-UniqueBoxes: True
-KnightsMove: True
-
-MagicSquares:
   - MagicSquare:
-    x: 5
-    y: 5
-Thermometers:
-  - [[8,2], [7,3], [6,4], [5,5], [4,6],[3,7], [2,8]]
+      row: 5
+      col: 5
+      step: 1
+
+  - Thermometer:
+    - [2,8]
+    - [3,7]
+    - [4,6]
+    - [5,5]
+    - [6,4]
+    - [7,3]
+    - [8,2]
