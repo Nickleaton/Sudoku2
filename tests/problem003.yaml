@@ -17,5 +17,5 @@ UniqueRows: True
 UniqueColumns: True
 UniqueBoxes: True
 KnightsMove: True
-#KingsMove: True
+#KingsMove: Trueet
 #Queens: [9]
