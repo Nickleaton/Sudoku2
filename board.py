@@ -8,7 +8,7 @@ class Board:
         self.columns = max(columns)
         self.knowns = np.full(shape=(self.rows, self.columns), fill_value=None)
 
-    def add(self, row: int, col: int, value: int):
+    def add(self, row: int, col: int, value):
         self.knowns[row - 1, col - 1] = value
 
     def __repr__(self) -> str:

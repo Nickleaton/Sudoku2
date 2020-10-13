@@ -2,10 +2,7 @@ Reference: https://cracking-the-cryptic.web.app/sudoku/HhPLM3MnRH
 Video: https://www.youtube.com/watch?v=LuFvoFkqZDA&feature=emb_logo&ab_channel=CrackingTheCryptic
 
 Constraints:
-  - UniqueCells
-  - UniqueRows
-  - UniqueColumns
-  - UniqueBoxes
+  - NormalSudukoRules
   - AntiKnightsMove
   - Knowns:
     - 2.......5

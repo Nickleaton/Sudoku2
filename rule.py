@@ -81,6 +81,7 @@ class ParameterRule (Rule):
 class MagicSquare(ParameterRule):
 
     def __init__(self, variables: Variables, parameters: Optional[Dict]):
+        super().__init__(variables, parameters)
         self.row = parameters['row']
         self.col = parameters['col']
         self.step = parameters['step']
@@ -359,17 +360,51 @@ class AntiKnightsMove(ChessMove):
         return "Cells that are knight's move away from each other cannot contain the same digit"
 
 
-class KingsMove(ChessMove):
+class AntiKingsMove(ChessMove):
 
     @property
     def constraints(self) -> List:
         offsets = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        return self.add_chess_move(offsets, 'AntiKnightsMove')
+        return self.add_chess_move(offsets, 'AntiKingsMove')
 
     @property
     def description(self) -> Optional[str]:
         return "Kings"
 
+class MoveQueenMove(ChessMove):
+
+    def constraints(self) -> List:
+        offsets = [(-1, -2), (1, -2), (-2, -1), (-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1)]
+        offsets = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        self.add_chess_move(sudoku, offsets, 'Quuens')
+
+    def description(self):
+        return "QueensMove"
+
+    def add_queen_move(sudoku, offsets, value) -> None:
+        for row in sudoku.ROWS:
+            for column in sudoku.COLUMNS:
+                for x, y in offsets:
+                    row2 = row + y
+                    column2 = column + x
+                    if not sudoku.valid(row2):
+                        continue
+                    if not sudoku.valid(column2):
+                        continue
+                    cname = f"Queens_move_{value}_{row}_{column}_{row2}_{column2}"
+                    sudoku.problem += sudoku.choices[value][row2][column2] \
+                                      + sudoku.choices[value][row][column] <= 1, \
+                                      cname
+
+    def add_queens_move(self, values: List[int]) -> None:
+        offsets = []
+        for v in self.VALUES:
+            offsets.append((v, v))
+            offsets.append((v, -v))
+            offsets.append((-v, v))
+            offsets.append((-v, -v))
+        for value in values:
+            self.add_queen_move(offsets, value)
 
 class OrthogonalConsecutive(Rule):
 

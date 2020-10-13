@@ -12,8 +12,8 @@ from variables import Variables
 config = yaml.safe_load(open('config.yaml', 'r'))
 solver = COIN_CMD(**config)
 
-with open('html_template.txt', 'r') as f:
-    HTML_TEMPLATE = f.read()
+HTML_RESULTS_TEMPLATE = open('html_template.txt', 'r').read()
+HTML_TABLE_TEMPLATE = open('html_table_template.txt', 'r').read()
 
 class Sudoku:
 
@@ -46,7 +46,7 @@ class Sudoku:
                 # If a new optimal solution cannot be found, we end the program
                 for row in self.variables.ROWS:
                     for col in self.variables.COLUMNS:
-                        self.board.add(row, col, int(self.variables.values[row][col].varValue))
+                        self.result.add(row, col, int(self.variables.values[row][col].varValue))
                 break
             else:
                 break
@@ -73,10 +73,14 @@ class Sudoku:
         rg.draw_cells()
         rg.draw_boxes()
         rg.draw_border()
+        for row in self.variables.ROWS:
+            for col in self.variables.COLUMNS:
+                known = self.board.knowns[row - 1][col - 1] is not None
+                rg.draw_number(row, col, self.result.knowns[row - 1][col - 1], known)
         return rg.drawing.tostring()
 
     def html(self, filename):
-        template = Template(HTML_TEMPLATE)
+        template = Template(HTML_RESULTS_TEMPLATE)
         with open(filename, "w") as f:
             f.write(template.substitute(rules=self.rule_text(), svg=self.svg(), solution=self.solution()))
 

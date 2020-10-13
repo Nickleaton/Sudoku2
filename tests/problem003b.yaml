@@ -1,0 +1,18 @@
+reference: https://cracking-the-cryptic.web.app/sudoku/Rn6FtF2n9j
+video: https://www.youtube.com/watch?v=3HC6bb4s34M&ab_channel=CrackingTheCryptic
+
+Constraints:
+  - NormalSudukoRules
+  - AntiKingsMove
+  - Knowns:
+    - .........
+    - .6......4
+    - 3514.....
+    - ....86592
+    - 6.....741
+    - ..2...8..
+    - .7.......
+    - 8...2.4.7
+    - .......58
+
+

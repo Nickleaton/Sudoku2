@@ -1,0 +1,12 @@
+<table dir="ltr" width="500" border="1">
+	<caption>Rules</caption>
+	<thead>
+		<tr>
+			<th scope="col">Rule</th>
+			<th scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+	$rules
+	</tbody>
+</table>
